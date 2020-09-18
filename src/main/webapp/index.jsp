@@ -1,4 +1,5 @@
-<%-- This is a page directive, that will apply to the entire page --%>
+<%@ page import="model.Soda" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -43,19 +44,19 @@
     <h2>Here are our sodas!</h2>
 
     <div class="list-group">
-        <ul>
-            <% int sodaIndex = 0; %>
+        <ul><!-- Start of our Sodas List -->
 
-            <c:forEach var="soda" items="${allSodas}">
+            <c:forEach var="soda" items="${allSodas}" varStatus="loop" >
+                <li class="list-group-item list-group-item-action">
+                    <strong>
+                            ${soda.name}
+                    </strong> - ${cokeSizes[loop.index]}
+                </li>
 
-                <li class="list-group-item list-group-item-action"><strong>${soda.name}</strong><c:out value="${cokeSizes.get(sodaIndex)}"</li>
-                <% sodaIndex + 1; %>
             </c:forEach>
-        </ul>
 
+        </ul><!--END of the Sodas List-->
     </div>
-
-
 
     <!--List all the sodas we currently have -->
 
@@ -67,8 +68,3 @@
 <jsp:include page="partials/scripts.jsp"/>
 </body>
 </html>
-
-
-
-
-
